@@ -54,11 +54,11 @@
                            min="0"
                            name="existencias"
                            placeholder="Existencias del producto">
+                    <span class="form-text text-danger"
+                          *ngIf="existenciasValidas()">
+                           Las existencias deben de ser 0 o mayor
+                    </span>
                 </div>
-                <span class="form-text text-danger"
-                      *ngIf="existenciasValidas()">
-                    Las existencias deben de ser 0 o mayor
-                </span>
             </div>
 
             <div class="row">
