@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './basicos.component.html',
   styleUrls: ['./basicos.component.css']
 })
-export class BasicosComponent   {
+export class BasicosComponent implements OnInit  {
 
   // miFormulario: FormGroup = new FormGroup({
   //   nombre: new FormControl ('RTX 4080ti'),
@@ -23,12 +23,20 @@ export class BasicosComponent   {
 
   constructor(private fb: FormBuilder) { }
 
+  ngOnInit() {
+    this.miFormulario.reset({
+      nombre: 'RTX',
+      precio: 1500
+    })
+  }
 
   guardar(){
     if(this.miFormulario.invalid){
+      this.miFormulario.markAllAsTouched();
       return;
     }
-    console.log(this.miFormulario.value)
+    console.log(this.miFormulario.value);
+    this.miFormulario.reset();
   }
 
   campoEsValido(campo:string){
